@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Comments from './Comments';
 class App extends React.Component {
   state = {
     newComent: '',
@@ -29,12 +29,7 @@ class App extends React.Component {
           <button onClick={this.sendComment}>Send</button>
         </div>
         {/** Comments */}
-        <div>
-          {/**Comment */}
-          {this.state.comments.map(c => {
-            return <div>{c}</div>;
-          })}
-        </div>
+        <Comments comments={this.state.comments} />
       </div>
     );
   }
