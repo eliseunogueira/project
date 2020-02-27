@@ -1,33 +1,22 @@
 import React from 'react';
 import Comments from './Comments';
+import NewComment from './NewComment';
 class App extends React.Component {
   state = {
-    newComent: '',
     comments: ['Comment 1', 'Comment 2', 'Comment 3', 'Comment 4']
   };
-  sendComment = () => {
+  sendComment = comment => {
     this.setState({
-      comments: [...this.state.comments, this.state.newComent],
-      newComent: ''
+      comments: [...this.state.comments, comment]
     });
   };
-  handleChange = event => {
-    this.setState({
-      newComent: event.target.value
-    });
-  };
+  /**the handleChange it's not the app responsabilit
+so it needs to be moved to it's own component  */
   render() {
     return (
       <div>
         {/**NewComment */}
-        <div>
-          <textarea
-            cols='30'
-            rows='10'
-            value={this.state.newComent}
-            onChange={this.handleChange}></textarea>
-          <button onClick={this.sendComment}>Send</button>
-        </div>
+        <NewComment sendComment={this.sendComment} />
         {/** Comments */}
         <Comments comments={this.state.comments} />
       </div>
